@@ -23,7 +23,7 @@ app.use(function(req, res, next) {
     next();
 });
 // Handle API key check
-app.use('/plugins/*', function(req, res, next) {
+app.use('/plugins*', function(req, res, next) {
     const method = req.method.toLowerCase();
     if (methods.indexOf(method) === -1) {
         next();
@@ -44,7 +44,6 @@ app.listen(port, () => {
 
 // Handle unknown routes
 app.use(function(req, res) {
-    console.log(req.method);
     res.status(404).json({ status: 'error', message: 'Route not found' });
 });
 
