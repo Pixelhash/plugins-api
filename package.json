@@ -1,0 +1,23 @@
+{
+  "name": "plugins-api",
+  "version": "1.0.0",
+  "description": "API server for my Spigot plugins",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "author": "CodeHat <dev@codehat.de>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chalk": "^2.3.1",
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2",
+    "lowdb": "^1.0.0",
+    "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.15.1"
+  }
+}
