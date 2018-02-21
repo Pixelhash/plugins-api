@@ -26,7 +26,7 @@ module.exports = function(app, db) {
                 data: plugin
             });
         } else {
-            res.json({ status: 'error', message: 'Plugin with given ID not found' });
+            res.status(400).json({ status: 'error', message: 'Plugin with given ID not found' });
         }
     });
 
@@ -44,7 +44,7 @@ module.exports = function(app, db) {
             .push(plugin)
             .write();
 
-        res.json({ status: 'success', id: plugin.id });
+        res.status(201).json({ status: 'success', id: plugin.id });
     });
 
     // Delete plugin
@@ -57,7 +57,7 @@ module.exports = function(app, db) {
         if (plugins.length !== 0) {
             res.json({ status: 'success' });
         } else {
-            res.json({ status: 'error', message: 'Plugin with given ID not found'});
+            res.status(400).json({ status: 'error', message: 'Plugin with given ID not found'});
         }
     });
 
@@ -66,13 +66,13 @@ module.exports = function(app, db) {
         const id = req.params.id;
         const plugins = db.get('plugins')
             .find({ id: id })
-            .assign({ version: req.body.version })
+            .assign({ version: req.body.version, updated_at: new Date().toLocaleString() })
             .write();
 
         if ('id' in plugins) {
             res.json({ status: 'success' });
         } else {
-            res.json({ status: 'error', message: 'Plugin with given ID not found'});
+            res.status(400).json({ status: 'error', message: 'Plugin with given ID not found'});
         }
     });
 

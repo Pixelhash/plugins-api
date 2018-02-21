@@ -22,9 +22,5 @@ module.exports = {
 
     error: function(...msg) {
         print(chalk.red.bold('[Error]'), ...msg);
-    },
-
-    request: function(...msg) {
-        print(chalk.magenta.bold('[HTTP]'), ...msg);
     }
 };
