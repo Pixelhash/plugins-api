@@ -16,19 +16,19 @@ const methods = [ "post", "put", "delete" ];
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use(function(req, res, next) {  
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials");
-    res.header("Access-Control-Allow-Credentials", "true");
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+    res.header('Access-Control-Allow-Credentials', 'true');
     next();
 });
 // Handle API key check
-app.use('/plugins*', function(req, res, next) {
+app.use(['/plugins', '/plugins/*'], function(req, res, next) {
     const method = req.method.toLowerCase();
     if (methods.indexOf(method) === -1) {
-        next();
+        return next();
     }
-
+    
     const sentKey = req.get('Api-Key');
     if (sentKey && sentKey === apiKey) {
         next();
