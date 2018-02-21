@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --recursive --exit",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "prod": "node server.js"
   },
   "author": "CodeHat <dev@codehat.de>",
   "license": "MIT",
