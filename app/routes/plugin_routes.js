@@ -37,7 +37,7 @@ module.exports = function(app, db) {
             name: req.body.name,
             version: req.body.version,
             url: req.body.url,
-            updated_at: new Date().toLocaleString()
+            updated_at: req.body.updated_at || new Date().toLocaleString()
         };
 
         db.get('plugins')
